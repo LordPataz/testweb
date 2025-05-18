@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zdravý Spánek Zlín - Prémiové Čištění Matrací s UV-C Dezinfekcí</title>
+    <meta name="description" content="Trápí Vás alergie, ekzém, nebo lupénka? Nabízíme revoluční čištění matrací ve Zlíně s UV-C dezinfekcí pro Váš zdravý spánek.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="https://placehold.co/32x32/1A237E/FFFFFF?text=ZS" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <style>
+        :root {
+            --color-primary: #1A237E; /* Hluboká indigo modrá */
+            --color-secondary: #00ACC1; /* Živá tyrkysová */
+            --color-accent: #FFB300; /* Teplá jantarová/zlatá */
+            
+            --color-text-dark: #263238; /* Velmi tmavá šedo-modrá */
+            --color-text-medium: #546E7A; /* Středně šedá */
+            --color-text-light: #B0BEC5; /* Světle šedá */
+            --color-text-on-dark: #ECEFF1; /* Velmi světlá pro tmavá pozadí */
+            --color-white: #FFFFFF;
+            --color-black: #000000;
+
+            --color-background-body: #F5F7FA; /* Velmi světlá, téměř bílá */
+            --color-background-card: var(--color-white);
+            --color-background-footer: var(--color-primary);
+            --color-background-header-scrolled: rgba(255, 255, 255, 0.9);
+
+            --font-primary: 'Nunito Sans', sans-serif;
+            --font-headings: 'Poppins', sans-serif; 
+            --font-display: 'Playfair Display', serif; 
+
+            --container-max-width: 1280px;
+            --border-radius-sm: 6px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 16px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 50px rgba(0,0,0,0.12);
+
+            --transition-fast: 0.2s ease-out;
+            --transition-medium: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            --section-padding-y: clamp(70px, 10vw, 120px);
+
+            /* Barvy pro chatbota - přebíráme z webu */
+            --chatbot-primary-color: var(--color-primary);
+            --chatbot-primary-color-darker: #121858; /* Tmavší varianta primární barvy webu */
+            --chatbot-secondary-color: var(--color-secondary);
+            --chatbot-user-message-bg: var(--color-secondary);
+            --chatbot-user-message-text: var(--color-white);
+            --chatbot-bot-message-bg: #e5e7eb; /* Tailwind gray-200 pro kontrast */
+            --chatbot-bot-message-text: var(--color-text-dark);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-background-body);
+            color: var(--color-text-medium);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        body.no-scroll { overflow-y: hidden; }
+
+        .container { max-width: var(--container-max-width); margin-left: auto; margin-right: auto; padding-left: 25px; padding-right: 25px; }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-headings); color: var(--color-text-dark); line-height: 1.3; font-weight: 700; margin-bottom: 0.8em; }
+        h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 800; }
+        h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; }
+        h3 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 600; }
+        h4 { font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 600; } 
+        p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+        a { color: var(--color-secondary); text-decoration: none; transition: color var(--transition-fast); }
+        a:hover { color: var(--color-accent); }
+        .required-asterisk { color: var(--color-accent); margin-left: 3px; }
+
+        .section-padding { padding-top: var(--section-padding-y); padding-bottom: var(--section-padding-y); }
+        .section-padding-top { padding-top: var(--section-padding-y); }
+        .section-padding-bottom { padding-bottom: var(--section-padding-y); }
+        .section-title { text-align: center; margin-bottom: 1.5rem; position: relative; padding-bottom: 0.5rem; }
+        .section-title::after { 
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 60px; height: 4px;
+            background-color: var(--color-secondary); border-radius: 2px;
+        }
+        .section-subtitle { text-align: center; font-size: 1.15rem; color: var(--color-text-medium); max-width: 750px; margin: 0 auto 3.5rem auto; }
+
+        .site-header {
+            background-color: transparent; position: fixed; 
+            top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 1.5rem 0; 
+            transition: background-color var(--transition-medium), box-shadow var(--transition-medium), padding var(--transition-medium);
+        }
+        .site-header.scrolled {
+            background-color: var(--color-background-header-scrolled);
+            box-shadow: var(--shadow-md); padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; font-size: 1.6rem; font-weight: 800; color: var(--color-primary); font-family: var(--font-headings); }
+        .site-header.scrolled .logo { color: var(--color-primary); } 
+        .logo svg { color: var(--color-secondary); transition: transform var(--transition-fast); }
+        .logo:hover svg { transform: rotate(15deg); }
+        .logo span { font-weight: 600; color: var(--color-text-dark); }
+        .site-header.scrolled .logo span { color: var(--color-text-dark); }
+        .main-navigation ul { list-style: none; display: flex; align-items: center; gap: 0.8rem; }
+        .nav-link {
+            color: var(--color-text-medium); font-weight: 600;
+            font-family: var(--font-headings); font-size: 1rem;
+            padding: 0.7rem 1.1rem; border-radius: var(--border-radius-sm);
+            position: relative; transition: color var(--transition-fast), background-color var(--transition-fast);
+        }
+        .site-header.scrolled .nav-link { color: var(--color-text-dark); }
+        .nav-link:hover { color: var(--color-secondary); }
+        .nav-link.active-link { color: var(--color-secondary); font-weight: 700; }
+        .nav-link.active-link::after {
+            content: ''; position: absolute; bottom: 0px; left: 50%;
+            transform: translateX(-50%); width: 25px; height: 3px;
+            background-color: var(--color-accent); border-radius: 2px;
+        }
+        .button-nav { 
+            background-color: var(--color-secondary); color: var(--color-white) !important;
+            padding: 0.7rem 1.5rem !important; border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .button-nav:hover { background-color: var(--color-accent); color: var(--color-text-dark) !important; box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+        .hamburger-menu { display: none; background: transparent; border: none; cursor: pointer; padding: 0.5rem; z-index: 1010; }
+        .hamburger-menu .line { display: block; width: 28px; height: 3px; background-color: var(--color-text-dark); border-radius: 3px; margin: 6px 0; transition: all var(--transition-medium); }
+        .site-header.scrolled .hamburger-menu .line { background-color: var(--color-text-dark); }
+        .hamburger-menu.active .line1 { transform: translateY(9px) rotate(45deg); }
+        .hamburger-menu.active .line2 { opacity: 0; transform: translateX(-20px); }
+        .hamburger-menu.active .line3 { transform: translateY(-9px) rotate(-45deg); }
+
+        .button {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.9rem 2rem; border: none; border-radius: var(--border-radius-md);
+            font-family: var(--font-headings); font-weight: 700; font-size: 1rem;
+            cursor: pointer; text-align: center;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            position: relative; overflow: hidden;
+        }
+        .button::before { 
+            content: ""; position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0; background-color: rgba(255,255,255,0.3);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            transition: width 0.4s ease-out, height 0.4s ease-out;
+            opacity: 0;
+        }
+        .button:active::before { width: 200%; height: 200%; opacity: 1; transition: 0s; }
+
+        .button i, .button svg { margin-left: 0.6em; transition: transform var(--transition-fast); }
+        .button:hover i, .button:hover svg { transform: translateX(4px); }
+        .primary-button { background-color: var(--color-primary); color: var(--color-white); }
+        .primary-button:hover { background-color: #121858; box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .secondary-button { background-color: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .secondary-button:hover { background-color: var(--color-primary); color: var(--color-white); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .large-button { padding: 1.1rem 2.8rem; font-size: 1.15rem; }
+        .small-button { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+
+        .hero-section {
+            position: relative; color: var(--color-white);
+            min-height: 90vh; 
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
+            padding-top: 100px; 
+        }
+        .hero-background-image {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://placehold.co/1920x1200/1A237E/FFFFFF?text=Luxusní+Čistá+Matrace');
+            background-size: cover; background-position: center;
+            filter: brightness(0.6) contrast(0.9);
+            transform: scale(1);
+            transition: transform 8s ease-out; 
+        }
+        .hero-section:hover .hero-background-image { transform: scale(1.05); } 
+
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(26,35,126,0.3) 0%, rgba(26,35,126,0.7) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+        .hero-title {
+            font-family: var(--font-display); 
+            font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.1;
+            margin-bottom: 1.5rem; color: var(--color-white);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle { font-size: clamp(1.15rem, 3vw, 1.45rem); margin-bottom: 3rem; opacity: 0.95; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+        .hero-buttons { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .hero-buttons .primary-button { background-color: var(--color-accent); color: var(--color-text-dark); }
+        .hero-buttons .primary-button:hover { background-color: #FFC107; }
+        .hero-buttons .secondary-button { border-color: var(--color-white); color: var(--color-white); }
+        .hero-buttons .secondary-button:hover { background-color: var(--color-white); color: var(--color-primary); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .service-card-link {
+            display: block; text-decoration: none; color: inherit;
+            border-radius: var(--border-radius-lg);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            will-change: transform, box-shadow; 
+        }
+        .service-card-link:hover { transform: translateY(-12px) scale(1.02); box-shadow: var(--shadow-xl); }
+        .service-card-link:focus-visible {
+            outline: 3px solid var(--color-secondary) !important; outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.3), var(--shadow-xl) !important;
+        }
+        .service-card-link:focus:not(:focus-visible) { outline: none; }
+
+        .service-card {
+            background-color: var(--color-background-card); padding: 2.5rem;
+            border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);
+            text-align: center; position: relative; overflow: hidden;
+            height: 100%; display: flex; flex-direction: column;
+        }
+        .service-icon {
+            font-size: 2.8rem; color: var(--color-white);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            width: 80px; height: 80px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.8rem auto;
+            box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
+            transition: transform var(--transition-fast);
+        }
+        .service-card-link:hover .service-icon { transform: rotateY(180deg) scale(1.1); }
+        .service-card h3 { margin-bottom: 1rem; font-size: 1.6rem; color: var(--color-text-dark); }
+        .service-card p { font-size: 1rem; color: var(--color-text-medium); margin-bottom: 1.5rem; flex-grow: 1; }
+        .price-tag { font-weight: 700; color: var(--color-primary); display: block; font-size: 1.5rem; font-family: var(--font-headings); margin-top: auto; }
+        
+        .service-card-link.highlighted-link .service-card {
+            border: 2px solid var(--color-accent);
+            box-shadow: 0 0 25px rgba(255, 179, 0, 0.3); 
+        }
+        .highlight-badge {
+            position: absolute; top: 20px; right: -45px;
+            background-color: var(--color-accent); color: var(--color-text-dark);
+            padding: 0.4rem 3.5rem; font-size: 0.85rem; font-weight: 700;
+            transform: rotate(45deg); box-shadow: var(--shadow-sm);
+        }
+
+        .why-us-section { background-color: var(--color-background-card); }
+        .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2.5rem; }
+        .why-us-item { text-align: center; padding: 2rem 1.5rem; position: relative; }
+        .why-us-icon-wrapper {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.8rem auto;
+            box-shadow: 0 5px 20px rgba(26, 35, 126, 0.2);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .why-us-item:hover .why-us-icon-wrapper { transform: scale(1.15) rotate(-10deg); box-shadow: 0 8px 25px rgba(26, 35, 126, 0.3); }
+        .why-us-item .why-us-icon-wrapper i { font-size: 2.5rem; color: var(--color-white); }
+        .why-us-item h4 { font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .why-us-item p { font-size: 0.95rem; color: var(--color-text-medium); }
+
+        /* Nová sekce pro informace o alergenech */
+        .info-alergeny-section { background-color: var(--color-background-body); } 
+        .info-alergeny-section .container { max-width: 900px; } 
+        .info-alergeny-section h3 { 
+            font-size: clamp(1.4rem, 3.2vw, 1.8rem); 
+            color: var(--color-primary); 
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-secondary);
+            display: inline-block; 
+        }
+        .info-alergeny-section h3:first-of-type { margin-top: 0; }
+        .info-alergeny-section p, .info-alergeny-section ul { 
+            font-size: 1.05rem; 
+            color: var(--color-text-dark); 
+            margin-bottom: 1rem;
+        }
+        .info-alergeny-section ul { list-style: disc; padding-left: 25px; margin-bottom: 1.5rem;}
+        .info-alergeny-section li { margin-bottom: 0.5rem; }
+        .info-alergeny-section strong { color: var(--color-primary); }
+        .info-alergeny-section .alert-info-box {
+            background-color: rgba(0, 172, 193, 0.05); 
+            border-left: 4px solid var(--color-secondary);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: var(--border-radius-md);
+        }
+        .info-alergeny-section .alert-info-box p:last-child { margin-bottom: 0; }
+
+
+        .cta-banner-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white); text-align: center;
+            border-radius: var(--border-radius-lg); 
+            margin: var(--section-padding-y) auto; 
+            max-width: calc(var(--container-max-width) - 50px); 
+            box-shadow: var(--shadow-lg);
+        }
+        .cta-banner-content { padding: clamp(3rem, 5vw, 4rem); }
+        .cta-banner-content h2 { color: var(--color-white); font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.25rem; }
+        .cta-banner-content p { font-size: 1.15rem; opacity: 0.95; margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+        .cta-banner-content .primary-button { background-color: var(--color-accent); color: var(--color-text-dark); }
+        .cta-banner-content .primary-button:hover { background-color: #FFC107; transform: translateY(-3px) scale(1.05); }
+
+        .pricing-accordion { max-width: 900px; margin: 0 auto; }
+        .accordion-item {
+            background-color: var(--color-background-card); margin-bottom: 1.25rem;
+            border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);
+            overflow: hidden; border: 1px solid var(--border-color-light, #e2e8f0); 
+            transition: box-shadow var(--transition-fast);
+        }
+        .accordion-item:hover { box-shadow: var(--shadow-lg); }
+        .accordion-header {
+            background-color: transparent; color: var(--color-text-dark);
+            padding: 1.5rem 1.75rem; width: 100%; text-align: left; border: none;
+            font-family: var(--font-headings); font-size: 1.2rem; font-weight: 600;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            transition: background-color var(--transition-fast);
+        }
+        .accordion-header:hover { background-color: rgba(0, 172, 193, 0.05); } 
+        .accordion-icon {
+            transition: transform var(--transition-medium); font-size: 1.1rem; color: var(--color-secondary);
+            background-color: rgba(0, 172, 193, 0.1); 
+            width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .accordion-header.active .accordion-icon { transform: rotate(135deg); background-color: var(--color-accent); color: var(--color-white); }
+        .accordion-content {
+            padding: 0 1.75rem; max-height: 0; opacity: 0; overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+        }
+        .accordion-content.active { padding: 1.75rem; opacity: 1; }
+        .accordion-content p { margin-bottom: 0.8rem; font-size: 1rem; }
+        .accordion-content p:last-child { margin-bottom: 0; }
+        .accordion-content strong { color: var(--color-primary); font-weight: 700; }
+        .accordion-content em { color: var(--color-text-medium); font-size: 0.9rem; }
+
+        .references-section { position: relative; color: var(--color-text-on-dark); text-align: center; }
+        .references-background-image {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://placehold.co/1920x900/1A237E/FFFFFF?text=Spokojení+Klienti');
+            background-size: cover; background-position: center 30%; 
+            background-attachment: fixed; z-index: 1; filter: grayscale(50%) brightness(0.7);
+        }
+        .references-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(26, 35, 126, 0.7); z-index: 2; }
+        .references-section .container { position: relative; z-index: 3; }
+        .references-section .section-title { color: var(--color-white); margin-bottom: 2.5rem; }
+        .overall-rating-summary {
+            max-width: 650px; margin: 0 auto; padding: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .stars-summary { font-size: 2.8rem; color: var(--color-accent); margin-bottom: 1.25rem; }
+        .stars-summary i { margin: 0 0.25rem; text-shadow: 0 0 10px rgba(255,179,0,0.5); }
+        .rating-text { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-on-dark); }
+        .rating-text strong { color: var(--color-white); }
+        .rating-source-text { font-size: 0.95rem; color: var(--color-text-light); margin-bottom: 2.5rem; font-style: italic; opacity: 0.8; }
+        .overall-rating-summary .button.secondary-button {
+            border-color: var(--color-accent); color: var(--color-accent);
+            background-color: transparent;
+        }
+        .overall-rating-summary .button.secondary-button:hover { background-color: var(--color-accent); color: var(--color-text-dark); }
+
+        .contact-section { background-color: var(--color-background-card); }
+        .contact-wrapper { display: flex; flex-wrap: wrap; gap: 3rem; }
+        .contact-details-column, .contact-form-column { flex: 1; min-width: 320px; }
+        .contact-details-column h3, .contact-form-column h3 { font-size: 1.8rem; margin-bottom: 1.8rem; color: var(--color-primary); }
+        .contact-details-column p { display: flex; align-items: flex-start; margin-bottom: 1.25rem; font-size: 1.05rem; }
+        .contact-details-column p i {
+            color: var(--color-secondary); margin-right: 1rem; font-size: 1.3rem;
+            width: 25px; text-align: center; margin-top: 0.1em;
+        }
+        .social-icons-contact { margin-top: 2rem; }
+        .social-icons-contact a {
+            color: var(--color-text-medium); font-size: 1.5rem; margin-right: 1.25rem;
+            transition: color var(--transition-fast), transform var(--transition-fast);
+        }
+        .social-icons-contact a:hover { color: var(--color-secondary); transform: translateY(-3px) scale(1.1); }
+
+        .contact-form .form-row { display: flex; gap: 1.8rem; margin-bottom: 1.5rem; }
+        .contact-form .form-row .form-group { flex: 1; margin-bottom: 0; }
+        .contact-form .form-group { margin-bottom: 1.5rem; }
+        .contact-form label { display: block; margin-bottom: 0.6rem; font-weight: 600; font-size: 0.95rem; color: var(--color-text-dark); }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%; padding: 0.9rem 1.1rem;
+            border: 1px solid var(--border-color-medium, #cbd5e0); 
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-primary); font-size: 1rem; color: var(--color-text-dark);
+            background-color: var(--color-background-body);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--color-text-light); }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(0, 172, 193, 0.25);
+            outline: none; background-color: var(--color-white);
+        }
+        .contact-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23a0aec0'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.1rem center; background-size: 1.1em; padding-right: 3rem; }
+        .contact-form textarea { resize: vertical; min-height: 130px; }
+        .form-consent { display: flex; align-items: center; font-size: 0.9rem; }
+        .form-consent input[type="checkbox"] { margin-right: 0.6rem; width: auto; accent-color: var(--color-secondary); transform: scale(1.1); }
+        .form-consent label { margin-bottom: 0; font-weight: 400; }
+        .submit-button { width: 100%; padding-top: 1rem; padding-bottom: 1rem; font-size: 1.05rem; }
+        .form-message-box { margin-top: 1.8rem; padding: 1.1rem; border-radius: var(--border-radius-md); font-size: 1rem; display: none; }
+        .form-message-box.success { background-color: #E6FFFA; color: #237A57; border: 1px solid #A7F3D0; } 
+        .form-message-box.error { background-color: #FFF5F5; color: #C53030; border: 1px solid #FEB2B2; } 
+
+        .site-footer { background-color: var(--color-background-footer); color: var(--color-text-on-dark); padding: var(--section-padding-y) 0 calc(var(--section-padding-y) / 2) 0; font-size: 0.95rem; }
+        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; margin-bottom: 3.5rem; }
+        .footer-column h4 { font-family: var(--font-headings); color: var(--color-white); font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 700; }
+        .footer-logo { display: flex; align-items: center; font-size: 1.4rem; font-weight: 800; color: var(--color-white); font-family: var(--font-headings); margin-bottom: 1.25rem; }
+        .footer-logo svg { color: var(--color-secondary); }
+        .footer-logo span { font-weight: 600; }
+        .footer-about p { line-height: 1.75; margin-bottom: 1.8rem; opacity: 0.9; }
+        .footer-socials a { color: var(--color-text-on-dark); font-size: 1.4rem; margin-right: 1.25rem; transition: color var(--transition-fast), transform var(--transition-fast); }
+        .footer-socials a:hover { color: var(--color-secondary); transform: translateY(-3px) scale(1.05); }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.85rem; }
+        .footer-links a { color: var(--color-text-on-dark); opacity: 0.9; transition: color var(--transition-fast), padding-left var(--transition-fast), opacity var(--transition-fast); }
+        .footer-links a:hover { color: var(--color-secondary); padding-left: 6px; opacity: 1; }
+        .footer-contact-info p { display: flex; align-items: center; margin-bottom: 0.85rem; opacity: 0.9; }
+        .footer-contact-info p i { color: var(--color-secondary); margin-right: 0.85rem; width: 20px; }
+        .footer-contact-info a { color: var(--color-text-on-dark); }
+        .footer-contact-info a:hover { color: var(--color-secondary); }
+        .footer-cta { margin-top: 1.25rem; display: inline-block; background-color: var(--color-secondary); color: var(--color-white); border: none; }
+        .footer-cta:hover { background-color: var(--color-accent); color: var(--color-text-dark); }
+        .footer-bottom { text-align: center; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom p { margin-bottom: 0.3rem; font-size: 0.9rem; opacity: 0.8; }
+        .creator-link { color: var(--color-secondary); font-weight: 600; opacity: 0.9; }
+        .creator-link:hover { text-decoration: underline; opacity: 1; }
+
+        #scrollToTopBtn {
+            display: none; position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 1020; 
+            background-color: var(--color-primary); color: var(--color-white);
+            border: none; border-radius: 50%; width: 55px; height: 55px;
+            font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow-lg);
+            opacity: 0; visibility: hidden;
+            transition: opacity var(--transition-fast), visibility var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+        }
+        #scrollToTopBtn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        #scrollToTopBtn:hover { background-color: var(--color-secondary); transform: scale(1.1) rotate(5deg); }
+
+        .cookie-consent-banner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: var(--color-text-dark); color: var(--color-text-on-dark);
+            padding: 1.25rem 1.8rem; box-shadow: 0 -3px 15px rgba(0,0,0,0.15);
+            z-index: 2000; display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1.25rem; transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+        .cookie-consent-banner.visible { transform: translateY(0); }
+        .cookie-consent-banner p { margin-bottom: 0; font-size: 0.95rem; }
+        .cookie-consent-banner a { color: var(--color-secondary); text-decoration: underline; }
+        .cookie-consent-banner .button { background-color: var(--color-secondary); color: var(--color-white); }
+        .cookie-consent-banner .button:hover { background-color: var(--color-accent); color: var(--color-text-dark); }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition-property: opacity, transform;
+            transition-duration: 1s; 
+            transition-timing-function: cubic-bezier(0.17, 0.84, 0.44, 1); 
+        }
+        .fade-in { transform: translateY(40px); }
+        .fade-in-up { transform: translateY(80px); }
+        .fade-in-left { transform: translateX(-80px); }
+        .fade-in-right { transform: translateX(80px); }
+        .scale-up { transform: scale(0.85); }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translate(0,0) scale(1); }
+
+        @media (max-width: 992px) {
+            .hero-title { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+            .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+            .contact-form .form-row { flex-direction: column; gap: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .main-navigation {
+                position: fixed; top: 0; left: -100%;
+                width: 90%; max-width: 320px; height: 100vh;
+                background-color: var(--color-background-card);
+                box-shadow: var(--shadow-xl);
+                padding-top: 6rem;
+                transition: left var(--transition-medium);
+                z-index: 1005; overflow-y: auto;
+            }
+            .main-navigation.active { left: 0; }
+            .main-navigation ul { flex-direction: column; align-items: stretch; gap: 0; width: 100%; } 
+            .nav-link {
+                display: block; width: 100%;
+                padding: 1.1rem 2rem; 
+                border-radius: 0;
+                border-bottom: 1px solid var(--border-color-light, #e2e8f0); 
+                font-size: 1.05rem; font-weight: 600;
+            }
+            .nav-link:hover { background-color: rgba(0, 172, 193, 0.05); }
+            .nav-link.active-link::after { display: none; }
+            .nav-link.active-link { background-color: var(--color-primary); color: var(--color-white); }
+            .button-nav { margin: 1.5rem 2rem; width: calc(100% - 4rem); text-align: center; padding: 0.9rem 1.5rem !important; }
+            .hamburger-menu { display: flex; }
+
+            .hero-title { font-size: clamp(2.2rem, 7vw, 3rem); }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-buttons { flex-direction: column; gap: 1rem; align-items: center; }
+            .hero-buttons .button { width: 100%; max-width: 320px; }
+
+            .services-grid, .why-us-grid { grid-template-columns: 1fr; }
+            .cta-banner-section { margin-left: 20px; margin-right: 20px; max-width: none;}
+
+            .footer-main { grid-template-columns: 1fr; text-align: center; }
+            .footer-socials, .footer-contact-info p { justify-content: center; }
+            .footer-logo { justify-content: center; }
+            .cookie-consent-banner { flex-direction: column; text-align: center; padding-bottom: 1.5rem; }
+            #scrollToTopBtn { bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; font-size: 1.2rem; }
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--color-secondary) !important;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.35) !important;
+        }
+        :focus:not(:focus-visible) { outline: none; }
+
+        #chatbot-widget-container { 
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: var(--border-radius-lg); 
+            box-shadow: var(--shadow-lg); 
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 1050; 
+            font-family: var(--font-primary); 
+        }
+        #chatbot-widget-container.closed {
+            height: 60px; 
+            width: 280px; 
+        }
+        #chatbot-header { 
+            background-color: var(--chatbot-primary-color); 
+            color: var(--color-white);
+            padding: 12px 16px;
+            font-weight: 600;
+            font-family: var(--font-headings);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-top-left-radius: var(--border-radius-lg);
+            border-top-right-radius: var(--border-radius-lg);
+        }
+        #chatbot-messages-wrapper { 
+             flex-grow: 1;
+             overflow: hidden; 
+             display: flex; 
+             flex-direction: column; 
+        }
+        #chatbot-messages { 
+            flex-grow: 1;
+            padding: 16px;
+            overflow-y: auto;
+            background-color: var(--color-background-body); 
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chatbot-message { 
+            padding: 10px 14px;
+            border-radius: var(--border-radius-md);
+            max-width: 80%;
+            word-wrap: break-word;
+            line-height: 1.5; 
+            font-size: 0.95rem; 
+        }
+        .chatbot-user-message { 
+            background-color: var(--chatbot-user-message-bg); 
+            color: var(--chatbot-user-message-text);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .chatbot-bot-message { 
+            background-color: var(--chatbot-bot-message-bg); 
+            color: var(--chatbot-bot-message-text);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        .chatbot-bot-message a {
+            color: var(--chatbot-secondary-color); 
+            text-decoration: underline;
+        }
+        .chatbot-bot-message a:hover {
+            color: var(--color-accent);
+        }
+        #chatbot-input-container { 
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid var(--border-color-light, #e2e8f0); 
+            background-color: white;
+        }
+        #chatbot-input { 
+            flex-grow: 1;
+            border: 1px solid var(--border-color-medium, #cbd5e0);
+            padding: 10px;
+            border-radius: var(--border-radius-sm);
+            margin-right: 8px;
+            font-size: 14px;
+            font-family: var(--font-primary);
+        }
+         #chatbot-input:focus {
+            border-color: var(--chatbot-secondary-color);
+            box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2); 
+            outline: none;
+        }
+        #chatbot-send-button { 
+            background-color: var(--chatbot-primary-color); 
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-weight: 500;
+            font-family: var(--font-headings);
+            transition: background-color var(--transition-fast);
+        }
+        #chatbot-send-button:hover {
+            background-color: var(--chatbot-primary-color-darker); 
+        }
+        #chatbot-toggle-button { 
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+         #chatbot-messages::-webkit-scrollbar { width: 6px; }
+         #chatbot-messages::-webkit-scrollbar-track { background: var(--color-background-body); }
+         #chatbot-messages::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+         #chatbot-messages::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#hero" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;"><path d="M2 8.5C2 7.20435 2.52678 6.00372 3.46447 5.06609C4.40215 4.12846 5.60272 3.60269 6.9 3.60269H17.1C18.3973 3.60269 19.5978 4.12846 20.5355 5.06609C21.4732 6.00372 22 7.20435 22 8.5V15.5C22 18.5 20.5 20.4 17.1 20.4H6.9C3.5 20.4 2 18.5 2 15.5V8.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.9V12.9C7 11.4 7.9 10.5 9.4 10.5H14.6C16.1 10.5 17 11.4 17 12.9V15.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Zdravý</span>Spánek.cz
+            </a>
+            <nav class="main-navigation">
+                <ul id="mainNavList">
+                    <li><a href="#hero" class="nav-link">Domů</a></li>
+                    <li><a href="#sluzby" class="nav-link">Služby</a></li>
+                    <li><a href="#proc-nas" class="nav-link">Proč nás</a></li>
+                    <li><a href="#info-alergeny" class="nav-link">Info o Alergenech</a></li> 
+                    <li><a href="#cenik" class="nav-link">Ceník</a></li>
+                    <li><a href="#reference" class="nav-link">Reference</a></li>
+                    <li><a href="#kontakt" class="nav-link button-nav">Poptávka</a></li> 
+                </ul>
+            </nav>
+            <button class="hamburger-menu" aria-label="Menu" aria-expanded="false" aria-controls="mainNavList">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section id="hero" class="hero-section">
+            <div class="hero-background-image"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content animate-on-scroll fade-in-up" data-animation-delay="200">
+                <h1 class="hero-title">Revoluce ve Vašem Spánku Začíná Zde</h1>
+                <p class="hero-subtitle">Alergie, ekzém, lupénka? Dopřejte si konečně úlevu a skutečně zdravý spánek! Ve Zlíně Vám nabízíme revoluční čištění matrací s pokročilou UV-C dezinfekcí, která efektivně likviduje alergeny, roztoče a bakterie. Objevte rozdíl, který pocítíte na vlastní kůži každou noc.</p>
+                <div class="hero-buttons">
+                    <a href="#kontakt" class="button primary-button">Nezávazná poptávka <i class="fas fa-chevron-right"></i></a>
+                    <a href="#sluzby" class="button secondary-button">Naše služby <i class="fas fa-concierge-bell"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sluzby" class="services-section section-padding">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">Komplexní Péče o Vaše Matrace</h2>
+                <p class="section-subtitle animate-on-scroll fade-in" data-animation-delay="100">Nabízíme profesionální služby přizpůsobené vašim potřebám. Používáme nejmodernější technologie a certifikované přípravky.</p>
+                <div class="services-grid">
+                    <a href="#kontakt" class="service-card-link animate-on-scroll scale-up" data-animation-delay="0" aria-label="Objednat Hloubkové Čištění">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-spray-can-sparkles"></i></div>
+                            <h3>Hloubkové Čištění</h3>
+                            <p>Intenzivní extrakční čištění, které odstraňuje prach, alergeny a hluboko usazené nečistoty.</p>
+                            <span class="price-tag">od 890 Kč</span>
+                        </div>
+                    </a>
+                    <a href="#kontakt" class="service-card-link highlighted-link animate-on-scroll scale-up" data-animation-delay="200" aria-label="Objednat Anti-Alergenní Program">
+                        <div class="service-card highlighted">
+                            <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+                            <h3>Anti-Alergenní Program</h3>
+                            <p>Speciální ošetření pro alergiky. Likvidace roztočů, bakterií a plísní s UV-C dezinfekcí.</p>
+                            <span class="price-tag">od 1290 Kč</span>
+                            <div class="highlight-badge">Nejžádanější</div>
+                        </div>
+                    </a>
+                    <a href="#kontakt" class="service-card-link animate-on-scroll scale-up" data-animation-delay="400" aria-label="Objednat Prémiovou Péči DeLuxe">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-gem"></i></div>
+                            <h3>Prémiová Péče DeLuxe</h3>
+                            <p>Kompletní program včetně impregnace pro dlouhodobou ochranu a svěžest vaší matrace.</p>
+                            <span class="price-tag">od 1790 Kč</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="proc-nas" class="why-us-section section-padding"> 
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">Vaše Výhody s Námi</h2>
+                 <p class="section-subtitle animate-on-scroll fade-in" data-animation-delay="100">Svěřte své matrace do rukou expertů. Garantujeme kvalitu, spolehlivost a individuální přístup.</p>
+                <div class="why-us-grid">
+                    <div class="why-us-item animate-on-scroll fade-in-up" data-animation-delay="0">
+                        <div class="why-us-icon-wrapper"><i class="fas fa-award"></i></div>
+                        <h4>Certifikovaná Kvalita</h4>
+                        <p>Používáme špičkové stroje Kärcher a ekologické přípravky schválené pro alergiky.</p>
+                    </div>
+                    <div class="why-us-item animate-on-scroll fade-in-up" data-animation-delay="150">
+                        <div class="why-us-icon-wrapper"><i class="fas fa-user-shield"></i></div>
+                        <h4>Zdraví na Prvním Místě</h4>
+                        <p>Efektivně eliminujeme 99,9% roztočů, bakterií a alergenů pro váš klidný spánek.</p>
+                    </div>
+                    <div class="why-us-item animate-on-scroll fade-in-up" data-animation-delay="300">
+                        <div class="why-us-icon-wrapper"><i class="fas fa-headset"></i></div>
+                        <h4>Osobní Přístup</h4>
+                        <p>Flexibilní plánování, poradenství a služby přizpůsobené přesně vašim potřebám.</p>
+                    </div>
+                     <div class="why-us-item animate-on-scroll fade-in-up" data-animation-delay="450">
+                        <div class="why-us-icon-wrapper"><i class="fas fa-check-double"></i></div>
+                        <h4>Garance Spokojenosti</h4>
+                        <p>Naším cílem je vaše maximální spokojenost. Desítky pozitivních recenzí mluví za vše.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="info-alergeny" class="info-alergeny-section section-padding">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">Vše o Alergenech a Jak Pomáháme</h2>
+                <p class="section-subtitle animate-on-scroll fade-in" data-animation-delay="100">
+                    Ahoj! Jsem Vaše Asistentka Spánku a ráda bych Vám poskytla rozšířené informace o alergenech, roztočích, plísních a dalších faktorech, které Vám pomohou pochopit, jak naše služby fungují pro Vaše zdraví.
+                </p>
+
+                <div class="animate-on-scroll fade-in-up" data-animation-delay="200">
+                    <h3>Co jsou alergeny a jak souvisí s roztoči, plísněmi a zvířaty?</h3>
+                    <p>Alergeny jsou látky, které u citlivých lidí vyvolávají alergické reakce.</p>
+                    <ul>
+                        <li>Nejčastějšími alergeny z <strong>roztočů</strong> nejsou sami roztoči, ale jejich mikroskopické výkaly a rozpadlé tělíčka.</li>
+                        <li>Alergeny <strong>plísní</strong> jsou jejich spory, které se vznášejí ve vzduchu a při vdechnutí mohou vyvolat reakci.</li>
+                        <li>Alergeny z <strong>domácích zvířat</strong> pochází nejčastěji z jejich lupů (odumřelých kožních buněk), slin a moči, nikoli ze srsti samotné. Tyto alergeny se snadno usazují v domácnosti.</li>
+                    </ul>
+                    <p>Všechny tyto alergeny se snadno uvolňují do vzduchu a usazují se v prachu a textiliích, zejména ve Vašich matracích.</p>
+                </div>
+
+                <div class="animate-on-scroll fade-in-up" data-animation-delay="300">
+                    <h3>Co jsou roztoči a kde žijí?</h3>
+                    <p>Roztoči jsou mikroskopické bytosti, které nejsou vidět pouhým okem.</p>
+                    <ul>
+                        <li>Milují teplé a vlhké prostředí, proto se nejčastěji vyskytují v matracích, lůžkovinách, polštářích, kobercích, čalouněném nábytku a plyšových hračkách.</li>
+                        <li>Živí se odumřelými kožními buňkami lidí a zvířat.</li>
+                    </ul>
+                </div>
+
+                <div class="animate-on-scroll fade-in-up" data-animation-delay="400">
+                    <h3>Co jsou plísně a kde se tvoří?</h3>
+                    <p>Plísně jsou mikroskopické houby, které se tvoří ve vlhkém a špatně větraném prostředí.</p>
+                    <ul>
+                        <li>Často je najdeme v koupelnách, kuchyních, na zdech za nábytkem, ve sklepích, nebo na místech postižených zatékáním. Mohou se objevit i ve Vaší matraci, pokud není dostatečně větraná nebo je vystavena vlhkosti.</li>
+                        <li>Kromě alergenů mohou produkovat i dráždivé látky a nepříjemné zápachy.</li>
+                    </ul>
+                </div>
+
+                <div class="animate-on-scroll fade-in-up" data-animation-delay="500">
+                    <h3>Alergeny z domácích zvířat – jak vznikají a kde se nachází?</h3>
+                    <p>Jak už bylo zmíněno, hlavní alergeny pochází z lupů (danderu), slin a moči zvířat (nejčastěji koček, psů, hlodavců).</p>
+                    <ul>
+                        <li>Tyto mikroskopické částice se snadno přenášejí na srsti zvířat a usazují se všude, kde se zvířata pohybují – na kobercích, nábytku, oblečení, lůžkovinách, ve vzduchu a samozřejmě i ve Vašich matracích.</li>
+                    </ul>
+                </div>
+                
+                <div class="animate-on-scroll fade-in-up" data-animation-delay="600">
+                    <h3>Jaké problémy způsobují alergeny roztočů, plísní a zvířat?</h3>
+                    <p>Tyto alergeny mohou mít významný dopad na Vaše zdraví a pohodu:</p>
+                    <ul>
+                        <li>Mohou vyvolat alergické reakce jako kýchání, rýmu, ucpaný nos, svědění očí a slzení.</li>
+                        <li>U lidí trpících astmatem mohou zhoršovat dýchací potíže a vyvolávat záchvaty.</li>
+                        <li>Často přispívají k atopickým ekzémům a dalším kožním problémům, které se projevují svěděním, zarudnutím a suchou pokožkou.</li>
+                        <li>Mohou také způsobovat bolesti hlavy, únavu a celkovou nepohodu.</li>
+                    </ul>
+                </div>
+
+                <div class="alert-info-box animate-on-scroll fade-in-up" data-animation-delay="700">
+                    <h3>Jak naše technologie pomáhá proti roztočům, plísním a dalším alergenům?</h3>
+                    <p>V ZdravýSpánek.cz používáme kombinaci pokročilých metod pro maximální účinnost:</p>
+                    <ul>
+                        <li><strong>UV-C světlo:</strong> Naše technologie využívá UV-C záření, které účinně ničí DNA roztočů, bakterií, virů a plísňových spor, čímž je efektivně likviduje a pomáhá rozkládat alergeny. Je to chemicky nezávadná a hloubková metoda.</li>
+                        <li><strong>Antialergenní přípravky:</strong> Tyto speciální prostředky neutralizují nebo denaturují alergeny (ať už z roztočů, plísní nebo zvířecích lupů), takže přestávají být škodlivé pro alergiky. Mohou také vytvářet ochrannou bariéru proti usazování nových alergenů a usnadňují jejich odstranění při následném čištění.</li>
+                        <li><strong>Komplexní čištění:</strong> V kombinaci s důkladným vysáváním a extrakčním čištěním, které odstraní usazené alergeny, naše metody vytváří zdravější a bezpečnější prostředí pro alergiky i nealergiky.</li>
+                    </ul>
+                     <p>Doufám, že Vám tyto informace pomohly! Máte další otázky k čištění nebo dezinfekci? Neváhejte se <a href="#kontakt">nás zeptat</a> nebo si prohlédněte náš <a href="#cenik">ceník</a>.</p>
+                </div>
+            </div>
+        </section>
+        <section class="cta-banner-section section-padding-top section-padding-bottom"> 
+            <div class="container cta-banner-content animate-on-scroll fade-in">
+                <h2>Připraveni na Změnu k Lepšímu Spánku?</h2>
+                <p>Nechte nás postarat se o čistotu vašich matrací. Kontaktujte nás ještě dnes pro nezávaznou konzultaci a cenovou nabídku.</p>
+                <a href="#kontakt" class="button primary-button large-button">Chci zdravější spánek <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+        </section>
+
+        <section id="cenik" class="pricing-section section-padding">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">Transparentní Ceník Služeb</h2>
+                <p class="section-subtitle animate-on-scroll fade-in" data-animation-delay="100">Jasné ceny bez skrytých poplatků. Doprava v rámci Zlína a blízkého okolí zdarma.</p>
+                <div class="pricing-accordion">
+                    <div class="accordion-item animate-on-scroll fade-in-up" data-animation-delay="0">
+                        <button class="accordion-header" aria-expanded="false">
+                            Jednolůžková matrace (do 100x200 cm)
+                            <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Hloubkové Čištění (1 strana):</strong> 890 Kč</p>
+                            <p><strong>Anti-Alergenní Program (obě strany + UV-C):</strong> 1290 Kč</p>
+                            <p><strong>Prémiová Péče DeLuxe (komplet + impregnace):</strong> 1790 Kč</p>
+                            <p><em>Sleva 150 Kč na každou další matraci na stejné adrese.</em></p>
+                        </div>
+                    </div>
+                    <div class="accordion-item animate-on-scroll fade-in-up" data-animation-delay="200">
+                        <button class="accordion-header" aria-expanded="false">
+                            Dvoulůžková matrace (do 200x200 cm)
+                            <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Hloubkové Čištění (1 strana):</strong> 1290 Kč</p>
+                            <p><strong>Anti-Alergenní Program (obě strany + UV-C):</strong> 1990 Kč</p>
+                            <p><strong>Prémiová Péče DeLuxe (komplet + impregnace):</strong> 2590 Kč</p>
+                            <p><em>Ceny jsou orientační a mohou se lišit dle míry znečištění. Finální cenu stanovíme po konzultaci.</em></p>
+                        </div>
+                    </div>
+                    <div class="accordion-item animate-on-scroll fade-in-up" data-animation-delay="400">
+                        <button class="accordion-header" aria-expanded="false">
+                            Doplňkové služby
+                            <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p><strong>Čištění topperu / přistýlky:</strong> od 350 Kč</p>
+                            <p><strong>Čištění dětské matrace (do 70x140 cm):</strong> od 590 Kč</p>
+                            <p><strong>Odstranění specifických skvrn (víno, krev, atd.):</strong> individuálně</p>
+                            <p><strong>Doprava mimo Zlín:</strong> 12 Kč/km (cesta tam i zpět z našeho sídla)</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="text-center animate-on-scroll fade-in" data-animation-delay="500" style="margin-top: 40px;">
+                    <a href="#kontakt" class="button secondary-button">Získat individuální kalkulaci <i class="fas fa-file-invoice-dollar"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="reference" class="references-section section-padding">
+            <div class="references-background-image"></div>
+            <div class="references-overlay"></div>
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">Naši Klienti Nás Milují</h2>
+                <div class="overall-rating-summary animate-on-scroll fade-in-up" data-animation-delay="100">
+                    <div class="stars-summary">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="rating-text"><strong>61 spokojených zákazníků</strong> nás ohodnotilo <strong>5 hvězdičkami</strong>.</p>
+                    <p class="rating-source-text">(Zdroj: Ověřené recenze z našich online profilů a poptávkových systémů)</p>
+                    <a href="#kontakt" class="button secondary-button">Přidejte se k nim <i class="fas fa-user-plus"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="contact-section section-padding">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">Spojte se s Námi</h2>
+                <p class="section-subtitle animate-on-scroll fade-in" data-animation-delay="100">Máte dotaz nebo si přejete objednat čištění? Jsme tu pro vás.</p>
+                <div class="contact-wrapper">
+                    <div class="contact-details-column animate-on-scroll fade-in-left" data-animation-delay="200">
+                        <h3>Kontaktní Údaje</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Region:</strong> Zlín a okolí (do 30 km)</p>
+                        <p><i class="fas fa-phone-alt"></i> <strong>Telefon:</strong> <a href="tel:+420777123456">+420 777 123 456</a></p>
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:poptavky@zdravyspanek.cz">poptavky@zdravyspanek.cz</a></p>
+                        <p><i class="fas fa-clock"></i> <strong>Pracovní doba:</strong> Po - Pá: 8:00 - 18:00, So: dle dohody</p>
+                        <div class="social-icons-contact">
+                            <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-column animate-on-scroll fade-in-right" data-animation-delay="400">
+                        <h3>Napište Nám</h3>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Jméno a příjmení <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email <span class="required-asterisk">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="vas@email.cz" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Vaše telefonní číslo">
+                            </div>
+                             <div class="form-group">
+                                <label for="serviceType">Typ služby (volitelné)</label>
+                                <select id="serviceType" name="serviceType">
+                                    <option value="">-- Vyberte službu --</option>
+                                    <option value="hloubkove">Hloubkové Čištění</option>
+                                    <option value="antialergenni">Anti-Alergenní Program</option>
+                                    <option value="premium">Prémiová Péče DeLuxe</option>
+                                    <option value="jine">Jiný dotaz / Konzultace</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Vaše zpráva <span class="required-asterisk">*</span></label>
+                                <textarea id="message" name="message" rows="5" placeholder="Popište nám vaši poptávku nebo dotaz..." required></textarea>
+                            </div>
+                            <div class="form-group form-consent">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">Souhlasím se <a href="/gdpr-placeholder" target="_blank">zpracováním osobních údajů</a> <span class="required-asterisk">*</span></label>
+                            </div>
+                            <button type="submit" class="button primary-button submit-button">Odeslat poptávku <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                        <div id="formMessage" class="form-message-box"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-column footer-about">
+                    <h4 class="footer-logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;"><path d="M2 8.5C2 7.20435 2.52678 6.00372 3.46447 5.06609C4.40215 4.12846 5.60272 3.60269 6.9 3.60269H17.1C18.3973 3.60269 19.5978 4.12846 20.5355 5.06609C21.4732 6.00372 22 7.20435 22 8.5V15.5C22 18.5 20.5 20.4 17.1 20.4H6.9C3.5 20.4 2 18.5 2 15.5V8.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.9V12.9C7 11.4 7.9 10.5 9.4 10.5H14.6C16.1 10.5 17 11.4 17 12.9V15.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>Zdravý</span>Spánek.cz
+                    </h4>
+                    <p>Přinášíme revoluci v čistotě a zdraví vašeho spánku. Profesionální péče pro matrace ve Zlíně a okolí.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column footer-links">
+                    <h4>Užitečné odkazy</h4>
+                    <ul>
+                        <li><a href="#sluzby">Přehled služeb</a></li>
+                        <li><a href="#info-alergeny">Info o Alergenech</a></li>
+                        <li><a href="#cenik">Detailní ceník</a></li>
+                        <li><a href="#proc-nas">Proč si vybrat nás</a></li>
+                        <li><a href="#reference">Hodnocení klientů</a></li>
+                        <li><a href="#kontakt">Kontaktujte nás</a></li>
+                        <li><a href="/blog-placeholder">Blog o zdravém spánku</a></li>
+                        <li><a href="/faq-placeholder">Časté dotazy (FAQ)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-contact-info">
+                    <h4>Rychlý kontakt</h4>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+420777123456">+420 777 123 456</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:poptavky@zdravyspanek.cz">poptavky@zdravyspanek.cz</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Zlín a okolí</p>
+                    <a href="#kontakt" class="button primary-button-outline footer-cta">Poptat čištění</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> ZdravýSpánek.cz. Všechna práva vyhrazena. </p>
+                <p>Tvořeno s vášní pro čistotu a design <a href="https://www.tvojemarketingovaagentura.cz" target="_blank" rel="noopener noreferrer" class="creator-link">digitální agenturou</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Nahoru" aria-label="Přejít nahoru">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <div id="cookieConsentBanner" class="cookie-consent-banner">
+        <p>Tato stránka používá cookies k vylepšení vašeho zážitku. <a href="/cookies-policy-placeholder">Více informací</a>.</p>
+        <button id="acceptCookieConsent" class="button primary-button small-button">Rozumím</button>
+    </div>
+
+    <div id="chatbot-widget-container" class="closed">
+        <div id="chatbot-header">
+            <span id="chatbot-name-display">Asistentka Spánku</span>
+            <button id="chatbot-toggle-button" aria-label="Přepnout chat">
+                <svg id="chatbot-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 1.037-.443 48.282 48.282 0 0 0 5.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                </svg>
+                <svg id="chatbot-close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="chatbot-messages-wrapper" class="hidden">
+            <div id="chatbot-messages">
+                </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Napište zprávu..." aria-label="Vstup pro zprávu chatbota">
+                <button id="chatbot-send-button" aria-label="Odeslat zprávu chatbotovi">Odeslat</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Původní JavaScript stránky ...
+            const siteHeader = document.querySelector('.site-header');
+            const hamburgerButton = document.querySelector(".hamburger-menu");
+            const mainNav = document.querySelector(".main-navigation");
+            const navLinks = document.querySelectorAll('.main-navigation .nav-link');
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            const cookieConsentBanner = document.getElementById("cookieConsentBanner");
+            const acceptCookieConsentBtn = document.getElementById("acceptCookieConsent");
+
+            function toggleMobileNav() {
+                if (mainNav && hamburgerButton) {
+                    const isActive = mainNav.classList.toggle("active");
+                    hamburgerButton.classList.toggle("active");
+                    hamburgerButton.setAttribute('aria-expanded', isActive.toString());
+                    document.body.classList.toggle('no-scroll', isActive); 
+                }
+            }
+
+            if (hamburgerButton && mainNav) {
+                hamburgerButton.addEventListener("click", toggleMobileNav);
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            toggleMobileNav();
+                        }
+                    });
+                });
+            }
+            
+            function smoothScrollTo(targetPosition, duration = 1000, easing = 'easeInOutCubic') {
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                let startTime = null;
+                const easingFunctions = {
+                    linear: t => t,
+                    easeInQuad: t => t * t,
+                    easeOutQuad: t => t * (2 - t),
+                    easeInOutQuad: t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
+                    easeInCubic: t => t * t * t,
+                    easeOutCubic: t => (--t) * t * t + 1,
+                    easeInOutCubic: t => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
+                };
+                function animationLoop(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1); 
+                    const easedTime = easingFunctions[easing] ? easingFunctions[easing](progress) : easingFunctions.easeInOutCubic(progress);
+                    const run = startPosition + distance * easedTime;
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animationLoop);
+                    }
+                }
+                requestAnimationFrame(animationLoop);
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (event) {
+                    const href = this.getAttribute('href');
+                    if (href && href.length > 1 && href.startsWith('#')) { 
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            event.preventDefault(); 
+                            const headerOffset = siteHeader ? siteHeader.offsetHeight : 70;
+                            let elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            let offsetPosition;
+                            
+                            if (targetId === 'hero') {
+                                offsetPosition = 0;
+                            } else {
+                                offsetPosition = elementPosition - headerOffset - 20; 
+                            }
+                            smoothScrollTo(offsetPosition, 1200, 'easeInOutCubic'); 
+                        }
+                    }
+                });
+            });
+
+            function handleHeaderScroll() {
+                if (siteHeader) {
+                    if (window.scrollY > 80) { 
+                        siteHeader.classList.add('scrolled');
+                    } else {
+                        siteHeader.classList.remove('scrolled');
+                    }
+                }
+            }
+
+            const sections = document.querySelectorAll('main section[id]');
+            function updateActiveNavLink() {
+                let currentSectionId = '';
+                const headerHeight = siteHeader ? siteHeader.offsetHeight : 70; 
+                const scrollThreshold = window.innerHeight * 0.4; 
+
+                sections.forEach(section => {
+                    const sectionRect = section.getBoundingClientRect();
+                    if (sectionRect.top <= headerHeight + scrollThreshold && sectionRect.bottom >= headerHeight + scrollThreshold / 2) {
+                         currentSectionId = section.getAttribute('id');
+                    }
+                });
+                
+                if (!currentSectionId && sections.length > 0 && window.pageYOffset < sections[0].offsetTop - headerHeight) {
+                     currentSectionId = sections[0].getAttribute('id');
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+            
+            const accordionItems = document.querySelectorAll(".accordion-item");
+            accordionItems.forEach(item => {
+                const header = item.querySelector(".accordion-header");
+                const content = item.querySelector(".accordion-content");
+                const icon = header ? header.querySelector(".accordion-icon i") : null;
+
+                if (header && content && icon) {
+                    header.addEventListener("click", () => {
+                        const isActive = content.classList.toggle("active");
+                        header.classList.toggle("active");
+                        header.setAttribute('aria-expanded', isActive.toString());
+
+                        if (isActive) {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                            icon.classList.remove('fa-plus');
+                            icon.classList.add('fa-minus');
+                        } else {
+                            content.style.maxHeight = null;
+                            icon.classList.remove('fa-minus');
+                            icon.classList.add('fa-plus');
+                        }
+                    });
+                }
+            });
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }; 
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.animationDelay) || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, delay);
+                        obs.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(el => observer.observe(el));
+
+            function handleScrollToTopButton() {
+                if (scrollToTopBtn) {
+                    if (window.pageYOffset > 400) { 
+                        scrollToTopBtn.style.display = "flex"; 
+                        setTimeout(() => scrollToTopBtn.classList.add('visible'), 20); 
+                    } else {
+                        scrollToTopBtn.classList.remove('visible');
+                        setTimeout(() => {
+                            if (!scrollToTopBtn.classList.contains('visible')) {
+                                scrollToTopBtn.style.display = "none";
+                            }
+                        }, parseFloat(getComputedStyle(scrollToTopBtn).transitionDuration) * 1000 || 300);
+                    }
+                }
+            }
+
+            if (scrollToTopBtn) {
+                scrollToTopBtn.addEventListener("click", () => {
+                    smoothScrollTo(0, 1000, 'easeInOutCubic'); 
+                });
+            }
+            
+            const contactForm = document.getElementById("contactForm");
+            const formMessageBox = document.getElementById("formMessage");
+
+            if (contactForm && formMessageBox) {
+                contactForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    formMessageBox.style.display = "none"; 
+                    formMessageBox.classList.remove('success', 'error');
+                    
+                    const submitButton = contactForm.querySelector('.submit-button');
+                    const originalButtonText = submitButton.innerHTML;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Odesílám...';
+                    submitButton.disabled = true;
+
+                    setTimeout(() => {
+                        formMessageBox.textContent = "Děkujeme! Vaše poptávka byla úspěšně odeslána. Brzy se vám ozveme.";
+                        formMessageBox.classList.add('success');
+                        formMessageBox.style.display = "block";
+                        contactForm.reset();
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+                    }, 2000);
+                });
+            }
+
+            function handleCookieConsent() {
+                if (cookieConsentBanner && acceptCookieConsentBtn) {
+                    if (!localStorage.getItem('cookieConsentGivenZdravySpanek')) { 
+                        setTimeout(() => cookieConsentBanner.classList.add('visible'), 2500); 
+                    }
+
+                    acceptCookieConsentBtn.addEventListener('click', () => {
+                        cookieConsentBanner.classList.remove('visible');
+                        localStorage.setItem('cookieConsentGivenZdravySpanek', 'true');
+                    });
+                }
+            }
+            
+            const currentYearSpan = document.getElementById("currentYear");
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            window.addEventListener('scroll', () => {
+                handleHeaderScroll();
+                updateActiveNavLink();
+                handleScrollToTopButton();
+            });
+
+            handleHeaderScroll(); 
+            updateActiveNavLink(); 
+            handleScrollToTopButton();
+            handleCookieConsent();
+
+            // --- JavaScript Kód Chatbota Asistentka Spánku (VYLEPŠENÁ LOGIKA + NOVÉ INFORMACE) ---
+            const chatbotWidgetContainer = document.getElementById('chatbot-widget-container');
+            const chatbotHeader = document.getElementById('chatbot-header');
+            const chatbotToggleButton = document.getElementById('chatbot-toggle-button'); 
+            const chatbotOpenIcon = document.getElementById('chatbot-open-icon');
+            const chatbotCloseIcon = document.getElementById('chatbot-close-icon');
+            const chatbotMessagesWrapper = document.getElementById('chatbot-messages-wrapper');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotSendButton = document.getElementById('chatbot-send-button');
+
+            let isChatbotOpen = false;
+
+            function addChatbotMessage(text, sender) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chatbot-message', sender === 'user' ? 'chatbot-user-message' : 'chatbot-bot-message');
+                
+                const linkRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)/g; 
+                const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
+                
+                let processedText = text.replace(linkRegex, (match) => {
+                    let Href = match;
+                    if (!match.startsWith('http')) {
+                        Href = 'http://' + match;
+                    }
+                    return `<a href="${Href}" target="_blank" rel="noopener noreferrer">${match}</a>`;
+                });
+                processedText = processedText.replace(emailRegex, '<a href="mailto:$1">$1</a>');
+
+                messageElement.innerHTML = processedText; 
+                chatbotMessages.appendChild(messageElement);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function getRandomResponse(responsesArray) {
+                if (!responsesArray || responsesArray.length === 0) {
+                    return "Omlouvám se, momentálně nemám k dispozici odpověď."; 
+                }
+                const randomIndex = Math.floor(Math.random() * responsesArray.length);
+                return responsesArray[randomIndex];
+            }
+
+            function getAsistentkaSpankuResponse(userInput) {
+                const lowerInput = userInput.toLowerCase().trim();
+                const normalizedInput = lowerInput
+                    .replace(/[áä]/g, 'a')
+                    .replace(/[éěë]/g, 'e')
+                    .replace(/[íï]/g, 'i')
+                    .replace(/[óöô]/g, 'o')
+                    .replace(/[úůü]/g, 'u')
+                    .replace(/[ýÿ]/g, 'y')
+                    .replace(/[č]/g, 'c')
+                    .replace(/[ď]/g, 'd')
+                    .replace(/[ň]/g, 'n')
+                    .replace(/[ř]/g, 'r')
+                    .replace(/[š]/g, 's')
+                    .replace(/[ť]/g, 't')
+                    .replace(/[ž]/g, 'z')
+                    .replace(/[,.?_!]/g, ''); 
+
+                const greetings = [
+                    "Dobrý den! Jsem Vaše Asistentka Spánku pro ZdravýSpánek.cz. Jak Vám dnes mohu pomoci s čištěním Vašich matrací?",
+                    "Zdravím Vás! Jmenuji se Asistentka Spánku a ráda Vám poskytnu informace o našich službách čištění matrací. Co by Vás zajímalo?",
+                    "Ahoj! Potřebujete poradit s výběrem čištění matrace nebo máte jiný dotaz? Jsem tu pro Vás."
+                ];
+                const thanksResponses = [
+                    "Ráda jsem pomohla! Pokud máte další dotazy ohledně našich služeb čištění matrací, ptejte se.",
+                    "Nemáte zač! Jsem tu, abych Vám pomohla najít nejlepší řešení pro Váš zdravý spánek.",
+                    "S potěšením! Kdybyste cokoli dalšího potřebovala vědět, jsem k dispozici."
+                ];
+
+                if (normalizedInput.includes('ahoj') || normalizedInput.includes('dobry den') || normalizedInput.includes('zdravim')) {
+                    return getRandomResponse(greetings);
+                }
+                if (normalizedInput.includes('dekuji') || normalizedInput.includes('diky')) {
+                    return getRandomResponse(thanksResponses);
+                }
+                 if (normalizedInput.includes('jak se mas') || normalizedInput.includes('jak se dari')) {
+                    return "Děkuji za optání, daří se mi skvěle a jsem připravena Vám pomoci s informacemi o čištění matrací!";
+                }
+
+                // NOVÉ INFORMACE O ALERGENECH, ROZTOČÍCH, PLÍSNÍCH
+                if (normalizedInput.includes('co jsou alergeny') || (normalizedInput.includes('alergen') && !normalizedInput.includes('zvirat') && !normalizedInput.includes('roztoc') && !normalizedInput.includes('plisen') && !normalizedInput.includes('pomaha') && !normalizedInput.includes('problemy'))) {
+                    return "Alergeny jsou látky, které u citlivých lidí vyvolávají alergické reakce. Nejčastějšími alergeny v domácnosti bývají ty z roztočů (jejich výkaly a tělíčka), spory plísní, nebo alergeny z domácích zvířat (lupy, sliny). Všechny se snadno usazují v prachu a textiliích, jako jsou matrace. Více si můžete přečíst v naší sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('co jsou roztoci') || (normalizedInput.includes('roztoc') && !normalizedInput.includes('alergie na roztoc') && !normalizedInput.includes('problemy') && !normalizedInput.includes('pomaha'))) {
+                     return "Roztoči jsou mikroskopické bytosti, které nejsou vidět pouhým okem. Milují teplé a vlhké prostředí, proto se nejčastěji vyskytují v matracích, lůžkovinách, polštářích a čalouněném nábytku. Živí se odumřelými kožními buňkami lidí a zvířat. Detailnější informace najdete v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('co jsou plisne') || (normalizedInput.includes('plisen') && !normalizedInput.includes('alergie na plisen') && !normalizedInput.includes('problemy') && !normalizedInput.includes('pomaha'))) {
+                    return "Plísně jsou mikroskopické houby, které se tvoří ve vlhkém a špatně větraném prostředí. Často je najdeme v koupelnách, kuchyních, nebo i v matracích, pokud nejsou správně udržovány. Kromě alergenů mohou produkovat i dráždivé látky a nepříjemné zápachy. Podrobnosti jsou v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('alergeny ze zvirat') || normalizedInput.includes('alergie na zvire') || normalizedInput.includes('alergie na psa') || normalizedInput.includes('alergie na kocku') || (normalizedInput.includes('zvireci') && normalizedInput.includes('alergen'))) {
+                    return "Alergeny z domácích zvířat pochází nejčastěji z jejich lupů (odumřelých kožních buněk), slin a moči, nikoli jen ze srsti samotné. Tyto mikroskopické částice se snadno usazují všude, kde se zvířata pohybují, včetně matrací. Naše čištění může pomoci tyto alergeny výrazně zredukovat. Více v <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('jake problemy zpusobuji alergeny') || normalizedInput.includes('co zpusobuji roztoci') || normalizedInput.includes('co zpusobuji plisne') || normalizedInput.includes('problemy s alergeny')) {
+                    return "Alergeny z roztočů, plísní a zvířat mohou vyvolat alergické reakce jako kýchání, rýmu, ucpaný nos, svědění očí a slzení. U lidí trpících astmatem mohou zhoršovat dýchací potíže. Často také přispívají k atopickým ekzémům a dalším kožním problémům, nebo mohou způsobovat bolesti hlavy a únavu. Více informací naleznete v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if ((normalizedInput.includes('jak vase technologie pomaha') || normalizedInput.includes('jak pomaha cisteni')) && (normalizedInput.includes('alergen') || normalizedInput.includes('roztoc') || normalizedInput.includes('plisen'))) {
+                    return "Naše technologie komplexně bojuje proti alergenům. UV-C záření ničí DNA roztočů, bakterií a plísní. Speciální antialergenní přípravky neutralizují samotné alergeny. V kombinaci s hloubkovým extrakčním čištěním tak vytváříme výrazně zdravější prostředí. Podívejte se na detaily v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('uv-c') || normalizedInput.includes('uv c svetlo') || normalizedInput.includes('uv svetlo') || (normalizedInput.includes('dezinfekce') && normalizedInput.includes('uv'))) {
+                    return "Naše technologie využívá UV-C záření, které účinně ničí DNA roztočů, bakterií, virů a plísňových spor. Tím je efektivně likviduje a pomáhá rozkládat alergeny. Je to chemicky nezávadná a hloubková metoda, kterou používáme například v našem Anti-Alergenním programu. Více o tom, jak to funguje, je v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('antialergenni pripravky') || (normalizedInput.includes('pripravky') && normalizedInput.includes('alergen')) || (normalizedInput.includes('prostredky') && normalizedInput.includes('alergen'))) {
+                    return "Používáme speciální antialergenní přípravky, které neutralizují nebo denaturují alergeny (ať už z roztočů, plísní nebo zvířecích lupů), takže přestávají být škodlivé pro alergiky. Mohou také vytvářet ochrannou bariéru proti usazování nových alergenů. Více se dočtete v <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                 if (normalizedInput.includes('komplexni cisteni') && normalizedInput.includes('alergen')) {
+                    return "Naše komplexní čištění, zejména Anti-Alergenní program a Prémiová péče DeLuxe, kombinuje důkladné vysávání, extrakční čištění, UV-C dezinfekci a aplikaci antialergenních přípravků. Tímto způsobem odstraňujeme a neutralizujeme maximum alergenů a vytváříme zdravější prostředí pro Váš spánek. Detailní popis najdete v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+
+
+                // Informace o firmě a službách
+                if (normalizedInput.includes('co delate') || normalizedInput.includes('jake sluzby') || normalizedInput.includes('nabizite') || normalizedInput.includes('cim se zabyvate')) {
+                    return "Jsme ZdravýSpánek.cz a specializujeme se na profesionální čištění matrací ve Zlíně a okolí. Nabízíme Hloubkové čištění, Anti-Alergenní program a Prémiovou péči DeLuxe. Více detailů najdete v sekci <a href='#sluzby'>Služby</a>.";
+                }
+                if (normalizedInput.includes('kde pusobite') || normalizedInput.includes('lokalita') || normalizedInput.includes('region') || normalizedInput.includes('misto pusobeni')) {
+                    return "Působíme primárně ve Zlíně a okolí do 30 km. Doprava v rámci Zlína je zdarma. Pro lokality mimo Zlín účtujeme 12 Kč/km (cesta tam i zpět).";
+                }
+                if (normalizedInput.includes('kontakt') || normalizedInput.includes('telefon') || normalizedInput.includes('email') || normalizedInput.includes('zavolat') || normalizedInput.includes('spojit se')) {
+                    return "Můžete nás kontaktovat telefonicky na <a href='tel:+420777123456'>+420 777 123 456</a> nebo emailem na <a href='mailto:poptavky@zdravyspanek.cz'>poptavky@zdravyspanek.cz</a>. Také můžete vyplnit poptávkový formulář v sekci <a href='#kontakt'>Kontakt</a>.";
+                }
+                if (normalizedInput.includes('pracovni doba') || normalizedInput.includes('kdy pracujete') || normalizedInput.includes('otevreno') || normalizedInput.includes('provozni doba')) {
+                    return "Naše standardní pracovní doba je Po - Pá: 8:00 - 18:00. V sobotu pracujeme dle individuální dohody.";
+                }
+                if (normalizedInput.includes('jak dlouho trva cisteni') || normalizedInput.includes('doba cisteni') || normalizedInput.includes('casova narocnost')) {
+                    return "Doba čištění závisí na velikosti matrace a míře znečištění. Obvykle se pohybuje od 1 do 2 hodin na matraci. Po čištění je matrace mírně vlhká a doba schnutí je individuální, obvykle několik hodin v závislosti na větrání a teplotě.";
+                }
+                if (normalizedInput.includes('cistite i neco jineho') || normalizedInput.includes('cistite sedacky') || normalizedInput.includes('cistite koberce')) {
+                    return "Primárně se specializujeme na čištění matrací, kde dosahujeme nejlepších výsledků díky našim technologiím. Pro čištění jiného čalouněného nábytku, jako jsou sedačky nebo koberce, nás prosím <a href='#kontakt'>kontaktujte</a> pro individuální domluvu a posouzení možností.";
+                }
+
+
+                // Ceník a služby - specifičtější dotazy první
+                if (normalizedInput.includes('anti-alergenni') || normalizedInput.includes('antialergenni') || (normalizedInput.includes('program') && (normalizedInput.includes('alergik') || normalizedInput.includes('alergie')))) {
+                    return "Náš Anti-Alergenní program je velmi žádaný a ideální pro alergiky! Zahrnuje čištění obou stran matrace a UV-C dezinfekci. Pro jednolůžko stojí 1290 Kč, pro dvoulůžko 1990 Kč. Více v sekci <a href='#sluzby'>Služby</a> a <a href='#cenik'>Ceníku</a>.";
+                }
+                if (normalizedInput.includes('hloubkove cisteni') || (normalizedInput.includes('hloubkove') && normalizedInput.includes('cisteni'))) {
+                    return "Hloubkové čištění matrací odstraňuje prach, alergeny a hluboko usazené nečistoty. Pro jednolůžko (1 strana) je cena od 890 Kč, pro dvoulůžko (1 strana) od 1290 Kč. Podívejte se na <a href='#sluzby'>Služby</a>.";
+                }
+                if (normalizedInput.includes('premiova pece') || normalizedInput.includes('deluxe')) {
+                    return "Prémiová Péče DeLuxe je náš kompletní program, který zahrnuje hloubkové čištění, anti-alergenní ošetření a impregnaci pro dlouhodobou ochranu. Ceny začínají na 1790 Kč pro jednolůžko. Detaily v <a href='#sluzby'>Služby</a>.";
+                }
+                 if ((normalizedInput.includes('cena') || normalizedInput.includes('kolik stoji') || normalizedInput.includes('cenik')) && (normalizedInput.includes('jednoluzko') || normalizedInput.includes('jednoluzkova'))) {
+                    return "Pro jednolůžkovou matraci (do 100x200 cm): Hloubkové čištění (1 strana) je za 890 Kč, Anti-Alergenní program za 1290 Kč a Prémiová péče DeLuxe za 1790 Kč. Máme také slevu 150 Kč na každou další matraci. Více v <a href='#cenik'>Ceníku</a>.";
+                }
+                if ((normalizedInput.includes('cena') || normalizedInput.includes('kolik stoji') || normalizedInput.includes('cenik')) && (normalizedInput.includes('dvouluzko') || normalizedInput.includes('dvouluzkova') || normalizedInput.includes('dvojluzko'))) {
+                    return "Pro dvoulůžkovou matraci (do 200x200 cm): Hloubkové čištění (1 strana) stojí 1290 Kč, Anti-Alergenní program 1990 Kč a Prémiová péče DeLuxe 2590 Kč. Ceny jsou orientační. Detaily v <a href='#cenik'>Ceníku</a>.";
+                }
+                if (normalizedInput.includes('topper') || normalizedInput.includes('pristylka')) {
+                    return "Ano, čistíme i toppery a přistýlky. Cena začíná od 350 Kč. Pro přesnou kalkulaci nás prosím <a href='#kontakt'>kontaktujte</a>.";
+                }
+                if (normalizedInput.includes('detska matrace') || normalizedInput.includes('detske matrace')) {
+                    return "Samozřejmě, čistíme i dětské matrace (do 70x140 cm). Cena je od 590 Kč.";
+                }
+                if (normalizedInput.includes('cena') || normalizedInput.includes('kolik stoji') || normalizedInput.includes('cenik')) { // Obecnější dotaz na cenu až po specifičtějších
+                    return "Kompletní přehled našich služeb a cen naleznete v sekci <a href='#sluzby'>Služby</a> a <a href='#cenik'>Ceník</a> na našem webu. Můžete mi upřesnit, jaký typ matrace nebo služby Vás zajímá, abych Vám mohla dát přesnější informaci?";
+                }
+                
+                // Alergie a zdraví - obecnější dotazy
+                if (normalizedInput.includes('alergik') || normalizedInput.includes('alergie') || normalizedInput.includes('roztoce') || normalizedInput.includes('pro alergiky') || normalizedInput.includes('mam alergii')) { // Pokud nebyl zachycen specifičtější dotaz na Anti-Alergenní program
+                    return "Ano, naše služby jsou velmi vhodné pro alergiky! Efektivně eliminujeme roztoče a jejich alergeny. Zvláště doporučuji náš <strong>Anti-Alergenní program</strong>. Používáme také ekologické přípravky. Více informací najdete u popisu služeb <a href='#sluzby'>zde</a> a také v naší nové sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('bezpecne pripravky') || normalizedInput.includes('chemie') || normalizedInput.includes('ekologicke') || normalizedInput.includes('setrne pripravky')) {
+                    return "Používáme ekologické a certifikované čisticí přípravky, které jsou šetrné k matracím, Vašemu zdraví a jsou schválené i pro alergiky. Naším cílem je zdraví na prvním místě. Více o našem přístupu najdete v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('skvrny') || normalizedInput.includes('fleky') || normalizedInput.includes('odstraneni skvrn')) {
+                    return "Odstranění specifických skvrn (např. od vína, krve) řešíme individuálně. Úspěšnost závisí na typu skvrny a materiálu matrace. Prosím, <a href='#kontakt'>kontaktujte nás</a> pro konzultaci, ráda Vám poradím.";
+                }
+                if (normalizedInput.includes('sleva') || normalizedInput.includes('slevy')) {
+                    return "Ano, nabízíme slevu 150 Kč na každou další matraci čištěnou na stejné adrese. Při čištění více matrací tak můžete ušetřit.";
+                }
+
+                // Výhody a technologie
+                if (normalizedInput.includes('proc vas') || normalizedInput.includes('vyhody') || normalizedInput.includes('proc si vybrat')) {
+                    return "Naši zákazníci si nás vybírají pro certifikovanou kvalitu (používáme špičkové stroje Kärcher a ekologické přípravky schválené pro alergiky), důraz na zdraví (efektivně eliminujeme 99,9% roztočů, bakterií a alergenů), osobní přístup a garanci spokojenosti. Více se dočtete v sekci <a href='#proc-nas'>Proč nás</a>.";
+                }
+                if (normalizedInput.includes('technologie') || normalizedInput.includes('pripravky') || normalizedInput.includes('stroje') || normalizedInput.includes('karcher')) {
+                    return "Používáme špičkové extrakční stroje Kärcher pro hloubkové čištění, ekologické a certifikované čisticí přípravky, které jsou šetrné k matracím i Vašemu zdraví. U Anti-alergenního programu a Prémiové péče DeLuxe využíváme také UV-C dezinfekci pro maximální hygienu. Více o naší technologii proti alergenům najdete v sekci <a href='#info-alergeny'>Info o Alergenech</a>.";
+                }
+                if (normalizedInput.includes('reference') || normalizedInput.includes('hodnoceni') || normalizedInput.includes('zkusenosti') || normalizedInput.includes('recenze')) {
+                    return "Máme mnoho spokojených zákaznic a zákazníků! Naše průměrné hodnocení je 5 hvězdiček od více než 60 klientů. Některé reference najdete v sekci <a href='#reference'>Reference</a> na našem webu.";
+                }
+                
+                // Objednávka a poptávka
+                if (normalizedInput.includes('objednat') || normalizedInput.includes('poptavka') || normalizedInput.includes('chci cisteni') || normalizedInput.includes('objednavka') || normalizedInput.includes('termin')) {
+                    return "Skvělá volba pro Váš zdravý spánek! Můžete vyplnit poptávkový formulář na našem webu v sekci <a href='#kontakt'>Kontakt</a>, nebo nám zavolejte na <a href='tel:+420777123456'>+420 777 123 456</a>. Ráda Vám pomohu s objednávkou a najdeme vhodný termín.";
+                }
+
+                // Výchozí odpověď - s variabilitou
+                const defaultResponses = [
+                    "Omlouvám se, na tuto otázku zatím nemám přesnou odpověď. Můžete ji prosím zkusit formulovat trochu jinak? Možná najdete odpověď v naší nové sekci <a href='#info-alergeny'>Info o Alergenech</a>.",
+                    "Tomu úplně nerozumím. Mohla byste mi to, prosím, upřesnit? Informace o našich službách také najdete na webu, nebo nás můžete <a href='#kontakt'>kontaktovat</a> přímo.",
+                    "Na tohle se budu muset ještě podívat. Mezitím můžete zkusit jiný dotaz, nebo se podívat na detaily na našem webu, včetně sekce <a href='#info-alergeny'>Info o Alergenech</a>. Případně Vám rádi poradí kolegové na telefonu či emailu uvedeném v sekci <a href='#kontakt'>Kontakt</a>."
+                ];
+                return getRandomResponse(defaultResponses);
+            }
+
+            function handleChatbotSendMessage() {
+                const userInput = chatbotInput.value.trim();
+                if (userInput) {
+                    addChatbotMessage(userInput, 'user');
+                    chatbotInput.value = ''; 
+
+                    setTimeout(() => {
+                        const botResponse = getAsistentkaSpankuResponse(userInput); 
+                        addChatbotMessage(botResponse, 'bot');
+                    }, 400 + Math.random() * 400);
+                }
+            }
+
+            chatbotSendButton.addEventListener('click', handleChatbotSendMessage);
+            chatbotInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    handleChatbotSendMessage();
+                }
+            });
+
+            function toggleChatbot() {
+                isChatbotOpen = !isChatbotOpen;
+                chatbotWidgetContainer.classList.toggle('closed', !isChatbotOpen);
+                chatbotMessagesWrapper.classList.toggle('hidden', !isChatbotOpen);
+                chatbotOpenIcon.classList.toggle('hidden', isChatbotOpen);
+                chatbotCloseIcon.classList.toggle('hidden', !isChatbotOpen);
+
+                if (isChatbotOpen) {
+                    if (chatbotMessages.children.length === 0) { 
+                        setTimeout(() => {
+                            addChatbotMessage(getRandomResponse([ 
+                                "Dobrý den! Jsem Vaše Asistentka Spánku pro ZdravýSpánek.cz. Jak Vám dnes mohu pomoci s čištěním Vašich matrací?",
+                                "Zdravím Vás! Jmenuji se Asistentka Spánku a ráda Vám poskytnu informace o našich službách čištění matrací. Co by Vás zajímalo?",
+                                "Ahoj! Potřebujete poradit s výběrem čištění matrace nebo máte jiný dotaz? Jsem tu pro Vás."
+                            ]), 'bot');
+                        }, 300);
+                    }
+                    chatbotInput.focus();
+                }
+            }
+            chatbotHeader.addEventListener('click', toggleChatbot); 
+            // Konec JavaScriptu Chatbota Asistentka Spánku
+        });
+    </script>
+</body>
+</html>
